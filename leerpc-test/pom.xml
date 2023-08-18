@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>leeRpc</artifactId>
+        <groupId>io.lee.rpc</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>leerpc-test</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>leerpc-test-scanner</module>
+        <module>leerpc-test-provider</module>
+        <module>leerpc-test-consumer</module>
+        <module>leerpc-test-consumer/leerpc-test-consumer-codec</module>
+        <module>leerpc-test-api</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.lee.rpc</groupId>
+            <artifactId>leerpc-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.lee.rpc</groupId>
+            <artifactId>leerpc-annotation</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.lee.rpc</groupId>
+            <artifactId>leeprc-provider</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>
