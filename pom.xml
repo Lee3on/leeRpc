@@ -20,6 +20,12 @@
         <module>leerpc-serialization/leerpc-serialization-jdk</module>
         <module>leerpc-codec</module>
         <module>leerpc-consumer</module>
+        <module>leerpc-consumer/leerpc-consumer-common</module>
+        <module>leerpc-proxy</module>
+        <module>leerpc-proxy/leerpc-proxy-api</module>
+        <module>leerpc-proxy/leerpc-proxy-jdk</module>
+        <module>leerpc-consumer/leerpc-consumer-native</module>
+        <module>leerpc-registry</module>
     </modules>
 
     <properties>
