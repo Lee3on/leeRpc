@@ -19,6 +19,7 @@
         <module>leerpc-test-api</module>
         <module>leerpc-test-consumer/leerpc-test-consumer-handler</module>
         <module>leerpc-test-consumer/leerpc-test-consumer-native</module>
+        <module>leerpc-test-registry</module>
     </modules>
 
     <properties>

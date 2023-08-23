@@ -1,8 +1,10 @@
-package io.lee.rpc.common.scanner.server;
+package io.lee.rpc.provider.common.scanner;
 
 import io.lee.rpc.annotation.RpcService;
 import io.lee.rpc.common.helper.RpcServiceHelper;
 import io.lee.rpc.common.scanner.ClassScanner;
+import io.lee.rpc.protocol.meta.ServiceMeta;
+import io.lee.rpc.registry.api.RegistryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,9 +24,9 @@ public class RpcServiceScanner extends ClassScanner {
     /**
      * Scan the classes under the specified package and filter the classes marked with @RpcService annotation
      */
-    public static Map<String, Object> doScannerWithRpcServiceAnnotationFilterAndRegistryService(String scanPackage) throws Exception{
+    public static Map<String, Object> doScannerWithRpcServiceAnnotationFilterAndRegistryService(String host, int port, String scanPackage, RegistryService registryService) throws Exception{
         Map<String, Object> handlerMap = new HashMap<>();
-        List<String> classNameList = getClassNameList(scanPackage, true);
+        List<String> classNameList = getClassNameList(scanPackage);
         if (classNameList == null || classNameList.isEmpty()){
             return handlerMap;
         }
@@ -34,11 +36,10 @@ public class RpcServiceScanner extends ClassScanner {
                 RpcService rpcService = clazz.getAnnotation(RpcService.class);
                 if (rpcService != null){
                     // Use interfaceClass first, if the name of interfaceClass is empty, use interfaceClassName
-                    // TODO 后续逻辑向注册中心注册服务元数据，同时向handlerMap中记录标注了RpcService注解的类实例
-                    // key in the handlerMap is stored as serviceName+version+group, and is processed according to the actual situation
-                    String serviceName = getServiceName(rpcService);
-                    String key = RpcServiceHelper.buildServiceKey(serviceName, rpcService.version(), rpcService.group());
-                    handlerMap.put(key, clazz.newInstance());
+                    ServiceMeta serviceMeta = new ServiceMeta(getServiceName(rpcService), rpcService.version(), rpcService.group(), host, port);
+                    // Register metadata to the registry service
+                    registryService.register(serviceMeta);
+                    handlerMap.put(RpcServiceHelper.buildServiceKey(serviceMeta.getServiceName(), serviceMeta.getServiceVersion(), serviceMeta.getServiceGroup()), clazz.newInstance());
                 }
             } catch (Exception e) {
                 LOGGER.error("scan classes throws exception: {}", e);

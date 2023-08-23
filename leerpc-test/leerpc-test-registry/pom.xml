@@ -3,17 +3,29 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>leerpc-registry</artifactId>
+        <artifactId>leerpc-test</artifactId>
         <groupId>io.lee.rpc</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>leerpc-registry-api</artifactId>
+    <artifactId>leerpc-test-registry</artifactId>
     <dependencies>
         <dependency>
             <groupId>io.lee.rpc</groupId>
             <artifactId>leerpc-protocol</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.lee.rpc</groupId>
+            <artifactId>leerpc-registry-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.lee.rpc</groupId>
+            <artifactId>leerpc-registry-zookeeper</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

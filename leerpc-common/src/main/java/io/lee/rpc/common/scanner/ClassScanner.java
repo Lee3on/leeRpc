@@ -36,14 +36,14 @@ public class ClassScanner {
     /**
      * Scan the specified package and get all the classes under the package
      * @param packageName package name
-     * @param recursive Whether to scan recursively
      * @return List of all full class names under the specified package
      * @throws Exception Exception
      */
-    public static List<String> getClassNameList(String packageName, boolean recursive) throws Exception{
+    public static List<String> getClassNameList(String packageName) throws Exception{
         // List of all classes
         List<String> classNameList = new ArrayList<String>();
         // Get the name of the package and convert it to a valid path
+        boolean recursive = true;
         String packageDirName = packageName.replace('.', '/');
         // Define a collection of enumerations and loop to process things under this directory
         Enumeration<URL> dirs = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
