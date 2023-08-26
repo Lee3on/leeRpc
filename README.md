@@ -1,5 +1,5 @@
 # Introduction 
-After studying Netty, I decided to write a lightweight RPC framework based on Netty, Zookeeper, and Spring. The gains have been quite fruitful. However, I have limited knowledge and abilities, so there may be some oversights. If you have any criticisms or suggestions, please send them to my email at sli964@wisc.edu**
+After studying Netty, I decided to write a lightweight RPC framework based on Netty, Zookeeper, and Spring. The gains have been quite fruitful. However, I have limited knowledge and abilities, so there may be some oversights. If you have any criticisms or suggestions, please send them to my email at sli964@wisc.edu
 
 
 # Features
