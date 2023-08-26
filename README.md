@@ -3,16 +3,16 @@ After studying Netty, I decided to write a lightweight RPC framework based on Ne
 
 
 # Features
-- **Supports long connections**
-- **Supports asynchronous invocation**
-- **Supports heartbeat detection**
-- **Supports JSON serialization**
-- **Close to zero configuration, based on annotation for invocation**
-- **Implemented service registry center based on Zookeeper**
-- **Supports dynamic management of client connections**
-- **Supports client service monitoring and discovery function**
-- **Supports server-side service registration function**
-- **Implemented based on Netty4.X version**
+- Supports long connections
+- Supports asynchronous invocation
+- Supports heartbeat detection
+- Supports JSON serialization
+- Close to zero configuration, based on annotation for invocation
+- Implemented service registry center based on Zookeeper
+- Supports dynamic management of client connections
+- Supports client service monitoring and discovery function
+- Supports server-side service registration function
+- Implemented based on Netty4.X version
 
 # Quick Start
 ### Server-side Development
