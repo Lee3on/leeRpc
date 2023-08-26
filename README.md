@@ -50,15 +50,15 @@ After studying Netty, I decided to write a lightweight RPC framework based on Ne
 
 ### Client-side Development
 - **Create an interface on the client side, which is the interface you want to call**
-	<pre>
+```Java
 	public interface TestRemote {
 		public Response testUser(User user);
 	}
-	</pre>
+```
 
 ### Usage
 - **Generate an interface form of attribute at the place where you want to make the call, and add the @RemoteInvoke annotation to this attribute**
-	<pre>
+  ```Java
 	@RunWith(SpringJUnit4ClassRunner.class)
 	@ContextConfiguration(classes=RemoteInvokeTest.class)
 	@ComponentScan("\\")
@@ -73,8 +73,8 @@ After studying Netty, I decided to write a lightweight RPC framework based on Ne
 			user.setName("Jason Lee");
 			userremote.testUser(user);
 		}
-	}	
-	</pre>
+	}
+  ```
 
 ### Result
 - **Result of ten thousand calls**
