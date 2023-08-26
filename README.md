@@ -6,88 +6,18 @@ After studying Netty, I decided to write a lightweight RPC framework based on Ne
 - Supports long connections
 - Supports asynchronous invocation
 - Supports heartbeat detection
-- Supports JSON serialization
-- Close to zero configuration, based on annotation for invocation
-- Implemented service registry center based on Zookeeper
+- Supports Hessian2 and Kyro serialization
+- Implements service registry center based on Zookeeper
 - Supports dynamic management of client connections
 - Supports client service monitoring and discovery function
 - Supports server-side service registration function
-- Implemented based on Netty4.X version
 
-# Quick Start
-### Server-side Development
-- **Add your own Service under the server's Service, and add the @Service annotation**
-	<pre>
-	@Service
-	public class TestService {
-		public void test(User user){
-			System.out.println("Called TestService.test");
-		}
-	}
-	</pre>
+# Scanning of core annotations
+Before developing the scanning logic for the `@RpcService` and `@RpcReference` annotations, 
+we can first implement logic to scan all classes in a specified package. 
+The specific requirements are as follows:
 
-- **Create a service interface and generate a class implements this interface**
-	###### Interface as following
-	<pre>
-	public interface TestRemote {
-		public Response testUser(User user);  
-	}
-	</pre>
-	###### The implementation class is as follows. Add the @Remote annotation to your implementation class. This class is where you truly invoke the service. You can generate any form of Response you want to return to the client
-	<pre> 
-	@Remote
-	public class TestRemoteImpl implements TestRemote{
-		@Resource
-		private TestService service;
-		public Response testUser(User user){
-			service.test(user);
-			Response response = ResponseUtil.createSuccessResponse(user);
-			return response;
-		}
-	}	
-	</pre>
-
-
-### Client-side Development
-- **Create an interface on the client side, which is the interface you want to call**
-```Java
-	public interface TestRemote {
-		public Response testUser(User user);
-	}
-```
-
-### Usage
-- **Generate an interface form of attribute at the place where you want to make the call, and add the @RemoteInvoke annotation to this attribute**
-  ```Java
-	@RunWith(SpringJUnit4ClassRunner.class)
-	@ContextConfiguration(classes=RemoteInvokeTest.class)
-	@ComponentScan("\\")
-	public class RemoteInvokeTest {
-		@RemoteInvoke
-		public static TestRemote userremote;
-		public static User user;
-		@Test
-		public void testSaveUser(){
-			User user = new User();
-			user.setId(1000);
-			user.setName("Jason Lee");
-			userremote.testUser(user);
-		}
-	}
-  ```
-
-### Result
-- **Result of ten thousand calls**
-![Markdown](https://s1.ax1x.com/2018/07/06/PZMMBF.png)
-
-- **Result of one hundred thousand calls**
-![Markdown](https://s1.ax1x.com/2018/07/06/PZM3N9.png)
-
-- **Result of one million calls**
-![Markdown](https://s1.ax1x.com/2018/07/06/PZMY1x.png)
-
-
-
-# Overview
-
-![Markdown](https://s1.ax1x.com/2018/07/06/PZK3SP.png)
+- Scan all classes in the specified package, whether these classes are in the current project or in referenced Jar files. They all need to be scanned.
+- The file extension of the classes that truly need to be scanned must be `.class`, 
+as only `.class` files are compiled Java class files.
+- Return a collection of the fully-qualified class names for all classes within the specified package.
