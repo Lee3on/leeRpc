@@ -6,7 +6,7 @@ After studying Netty, I decided to write a lightweight RPC framework based on Ne
 - Supports long connections
 - Supports asynchronous invocation
 - Supports heartbeat detection
-- Supports Hessian2 and Kyro serialization
+- Supports Hessian2 and Kryo serialization
 - Implements service registry center based on Zookeeper
 - Supports dynamic management of client connections
 - Supports client service monitoring and discovery function

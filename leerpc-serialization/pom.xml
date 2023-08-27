@@ -10,6 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>leerpc-serialization</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>leerpc-serialization-hessian2</module>
+        <module>leerpc-serialization-kryo</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

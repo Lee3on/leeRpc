@@ -11,7 +11,7 @@ import io.lee.rpc.test.scanner.service.DemoService;
  */
 public class ConsumerBusinessServiceImpl implements ConsumerBusinessService {
 
-    @RpcReference(registryType = "zookeeper", registryAddress = "127.0.0.1:2181", version = "1.0.0", group = "binghe")
+    @RpcReference(registryType = "zookeeper", registryAddress = "127.0.0.1:2181", version = "1.0.0", group = "lee")
     private DemoService demoService;
 
 }

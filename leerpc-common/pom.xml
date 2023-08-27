@@ -23,6 +23,11 @@
             <artifactId>leerpc-annotation</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.lee.rpc</groupId>
+            <artifactId>leerpc-constants</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

@@ -1,16 +1,21 @@
 package io.lee.rpc.codec;
 
 import io.lee.rpc.serialization.api.Serialization;
-import io.lee.rpc.serialization.jdk.JdkSerialization;
+import io.lee.rpc.spi.loader.ExtensionLoader;
 
 /**
  * @author Shuaijie
  * @version 1.0.0
- * @description 实现编解码的接口，提供序列化和反序列化的默认方法
+ * @description Interface of encoding and decoding implementation, providing default methods for serialization and deserialization
  */
 public interface RpcCodec {
 
-    default Serialization getJdkSerialization(){
-        return new JdkSerialization();
+    /**
+     * Get the serialization handle through SPI according to serializationType
+     * @param serializationType Serialization type
+     * @return Serialization object
+     */
+    default Serialization getSerialization(String serializationType){
+        return ExtensionLoader.getExtension(Serialization.class, serializationType);
     }
 }
